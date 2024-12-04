@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "leave",
 	eventType: ["log:unsubscribe"],
 	version: "1.0.0",
-	credits: "𝙋𝙧𝙞𝙮𝙖𝙣𝙨𝙝 𝙍𝙖𝙟𝙥𝙪𝙩",
+	credits: "BAYJID",
 	description: "Notify the Bot or the person leaving the group with a random gif/photo/video",
 	dependencies: {
 		"fs-extra": "",
@@ -29,8 +29,8 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	const { join } =  global.nodemodule["path"];
 	const { threadID } = event;
   const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Kolkata").format("DD/MM/YYYY || HH:mm:s");
-  const hours = moment.tz("Asia/Kolkata").format("HH");
+  const time = moment.tz("Asia/Dhaka").format("DD/MM/YYYY || HH:mm:s");
+  const hours = moment.tz("Asia/Dhaka").format("HH");
 	const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
 	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
 	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "leave" : "managed";
