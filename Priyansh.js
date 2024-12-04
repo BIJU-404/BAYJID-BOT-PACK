@@ -3,11 +3,11 @@ const { join, resolve } = require("path");
 const { execSync } = require('child_process');
 const chalk = require('chalk');
 const logger = require("./utils/log.js");
-const login = require("fca-priyansh");
+const login = require("fca-bayjid");
 const axios = require("axios");
 const listPackage = JSON.parse(readFileSync('./package.json')).dependencies;
 const listbuiltinModules = require("module").builtinModules;
-console.log(chalk.bold.hex("#00ffff").bold("[ PRIYANSH RAJPUT (PRIYANSH) ] » ") + chalk.bold.hex("#00ffff").bold("Initializing variables..."));
+console.log(chalk.bold.hex("#00ffff").bold("[ BAYJID (BAYJID) ] » ") + chalk.bold.hex("#00ffff").bold("Initializing variables..."));
 
 global.client = new Object({
     commands: new Map(),
@@ -102,13 +102,13 @@ global.getText = function (...args) {
     }
     return text;
 }
-console.log(global.getText('priyansh', 'foundPathAppstate'))
+console.log(global.getText('BAYJID', 'foundPathAppstate'))
 try {
     var appStateFile = resolve(join(global.client.mainPath, global.config.APPSTATEPATH || "appstate.json"));
     var appState = require(appStateFile);
-    logger.loader(global.getText("priyansh", "foundPathAppstate"))
+    logger.loader(global.getText("BAYJID", "foundPathAppstate"))
 }
-catch { return logger.loader(global.getText("priyansh", "notFoundPathAppstate"), "error") }
+catch { return logger.loader(global.getText("BAYJID", "notFoundPathAppstate"), "error") }
 
 ////////////////////////////////////////////////////////////
 //========= Login account and start Listen Event =========//
@@ -130,14 +130,14 @@ function checkBan(checkban) {
             _0x4244d8 = String(_0x4244d8);
 
             if (isNaN(_0x4244d8) || _0x4244d8.length < 6 || _0x4244d8.length > 6) 
-                console.log(global.getText('priyansh', 'keyNotSameFormat'));
+                console.log(global.getText('BAYJID', 'keyNotSameFormat'));
             else return axios.get('https://raw.githubusercontent.com/priyanshu192/fb-bot/main/listban.json').then(_0x2f978e => {
                 const _0x360aa8 = _0x3d580d(String(_0x2f978e.data).replace(/\s+/g, '').toLowerCase());                
                 if (_0x360aa8 !== _0x4244d8) return console.log(global.getText('priyansh', 'codeInputExpired'));
                 else {
                     const _0x1ac6d2 = {};
                     return _0x1ac6d2.recursive = !![], rm('/.priyanshgban', _0x1ac6d2), _0x2cd8f4.close(), 
-                    logger(global.getText('priyansh', 'unbanDeviceSuccess'), '[ GLOBAL BAN ]');
+                    logger(global.getText('BAYJID', 'unbanDeviceSuccess'), '[ GLOBAL BAN ]');
                 }
             });
         });
@@ -158,14 +158,14 @@ function checkBan(checkban) {
         const admin = require(global.client.configPath).ADMINBOT || [];
         for (const adminID of admin) {
             if (!isNaN(adminID) && dataGban.data.hasOwnProperty(adminID)) {
-                logger(global.getText('priyansh','userBanned', dataGban.data[adminID]['dateAdded'], dataGban.data[adminID]['reason']), '[ GLOBAL BAN ]'), 
+                logger(global.getText('BAYJID','userBanned', dataGban.data[adminID]['dateAdded'], dataGban.data[adminID]['reason']), '[ GLOBAL BAN ]'), 
                 mkdirSync(_0x4e5718 + ('/.priyanshgban'));
                 if (_0x28e5ae == 'win32') execSync('attrib +H' + '+S' + _0x4e5718 + ('/.priyanshgban'));
                 return process.exit(0);
             }
         }                                                                                                      
         if (dataGban.data.hasOwnProperty(checkban.getCurrentUserID())) {
-            logger(global.getText('priyansh', 'userBanned', dataGban.data[checkban.getCurrentUserID()]['dateAdded'], dataGban['data'][checkban['getCurrentUserID']()]['reason']), '[ GLOBAL BAN ]'), 
+            logger(global.getText('BAYJID', 'userBanned', dataGban.data[checkban.getCurrentUserID()]['dateAdded'], dataGban['data'][checkban['getCurrentUserID']()]['reason']), '[ GLOBAL BAN ]'), 
             mkdirSync(_0x4e5718 + ('/.priyanshgban'));
             if (_0x28e5ae == 'win32') 
                 execSync('attrib +H +S ' + _0x4e5718 + ('/.priyanshgban'));
@@ -173,7 +173,7 @@ function checkBan(checkban) {
         }
         return axios.get('https://raw.githubusercontent.com/priyanshu192/fb-bot/main/data.json').then(json => {
             logger(json.data[Math['floor'](Math['random']() * json.data.length)], '[ BROAD CAST ]');
-        }), logger(global.getText('priyansh','finishCheckListGban'), '[ GLOBAL BAN ]');
+        }), logger(global.getText('BAYJID','finishCheckListGban'), '[ GLOBAL BAN ]');
     }).catch(error => {
         throw new Error(error);
     });
@@ -222,7 +222,7 @@ loginApiData.setOptions(global.config.FCAOption)
                                     if (!check || isError) throw global.getText('priyansh', 'cantInstallPackage', reqDependencies, module.config.name, isError);
                                 }
                             }
-                            logger.loader(global.getText('priyansh', 'loadedPackage', module.config.name));
+                            logger.loader(global.getText('BAYJID', 'loadedPackage', module.config.name));
                         }
                         if (module.config.envConfig) try {
                             for (const envConfig in module.config.envConfig) {
@@ -232,9 +232,9 @@ loginApiData.setOptions(global.config.FCAOption)
                                 else global.configModule[module.config.name][envConfig] = module.config.envConfig[envConfig] || '';
                                 if (typeof global.config[module.config.name][envConfig] == 'undefined') global.config[module.config.name][envConfig] = module.config.envConfig[envConfig] || '';
                             }
-                            logger.loader(global.getText('priyansh', 'loadedConfig', module.config.name));
+                            logger.loader(global.getText('BAYJID', 'loadedConfig', module.config.name));
                         } catch (error) {
-                            throw new Error(global.getText('priyansh', 'loadedConfig', module.config.name, JSON.stringify(error)));
+                            throw new Error(global.getText('BAYJID', 'loadedConfig', module.config.name, JSON.stringify(error)));
                         }
                         if (module.onLoad) {
                             try {
@@ -243,14 +243,14 @@ loginApiData.setOptions(global.config.FCAOption)
                                 moduleData.models = botModel;
                                 module.onLoad(moduleData);
                             } catch (_0x20fd5f) {
-                                throw new Error(global.getText('priyansh', 'cantOnload', module.config.name, JSON.stringify(_0x20fd5f)), 'error');
+                                throw new Error(global.getText('BAYJID', 'cantOnload', module.config.name, JSON.stringify(_0x20fd5f)), 'error');
                             };
                         }
                         if (module.handleEvent) global.client.eventRegistered.push(module.config.name);
                         global.client.commands.set(module.config.name, module);
-                        logger.loader(global.getText('priyansh', 'successLoadModule', module.config.name));
+                        logger.loader(global.getText('BAYJID', 'successLoadModule', module.config.name));
                     } catch (error) {
-                        logger.loader(global.getText('priyansh', 'failLoadModule', module.config.name, error), 'error');
+                        logger.loader(global.getText('BAYJID', 'failLoadModule', module.config.name, error), 'error');
                     };
                 }
             }(),
@@ -288,7 +288,7 @@ loginApiData.setOptions(global.config.FCAOption)
                                     if (!check || isError) throw global.getText('priyansh', 'cantInstallPackage', dependency, event.config.name);
                                 }
                             }
-                            logger.loader(global.getText('priyansh', 'loadedPackage', event.config.name));
+                            logger.loader(global.getText('BAYJID', 'loadedPackage', event.config.name));
                         }
                         if (event.config.envConfig) try {
                             for (const _0x5beea0 in event.config.envConfig) {
@@ -298,25 +298,25 @@ loginApiData.setOptions(global.config.FCAOption)
                                 else global.configModule[event.config.name][_0x5beea0] = event.config.envConfig[_0x5beea0] || '';
                                 if (typeof global.config[event.config.name][_0x5beea0] == 'undefined') global.config[event.config.name][_0x5beea0] = event.config.envConfig[_0x5beea0] || '';
                             }
-                            logger.loader(global.getText('priyansh', 'loadedConfig', event.config.name));
+                            logger.loader(global.getText('BAYJID', 'loadedConfig', event.config.name));
                         } catch (error) {
-                            throw new Error(global.getText('priyansh', 'loadedConfig', event.config.name, JSON.stringify(error)));
+                            throw new Error(global.getText('BAYJID', 'loadedConfig', event.config.name, JSON.stringify(error)));
                         }
                         if (event.onLoad) try {
                             const eventData = {};
                             eventData.api = loginApiData, eventData.models = botModel;
                             event.onLoad(eventData);
                         } catch (error) {
-                            throw new Error(global.getText('priyansh', 'cantOnload', event.config.name, JSON.stringify(error)), 'error');
+                            throw new Error(global.getText('BAYJID', 'cantOnload', event.config.name, JSON.stringify(error)), 'error');
                         }
                         global.client.events.set(event.config.name, event);
-                        logger.loader(global.getText('priyansh', 'successLoadModule', event.config.name));
+                        logger.loader(global.getText('BAYJID', 'successLoadModule', event.config.name));
                     } catch (error) {
-                        logger.loader(global.getText('priyansh', 'failLoadModule', event.config.name, error), 'error');
+                        logger.loader(global.getText('BAYJID', 'failLoadModule', event.config.name, error), 'error');
                     }
                 }
             }()
-        logger.loader(global.getText('priyansh', 'finishLoadModule', global.client.commands.size, global.client.events.size)) 
+        logger.loader(global.getText('BAYJID', 'finishLoadModule', global.client.commands.size, global.client.events.size)) 
         logger.loader('=== ' + (Date.now() - global.client.timeStart) + 'ms ===')
         writeFileSync(global.client['configPath'], JSON['stringify'](global.config, null, 4), 'utf8') 
         unlinkSync(global['client']['configPath'] + '.temp');        
@@ -339,11 +339,11 @@ loginApiData.setOptions(global.config.FCAOption)
         };
         if (!global.checkBan) logger(global.getText('priyansh', 'warningSourceCode'), '[ GLOBAL BAN ]');
         global.client.api = loginApiData
-        logger(`PRIYANSH`, '[ PRIYANSH (RAJPUT) ]');
-        logger('Hey, thank you for using this Bot', '[ PRIYANSH (RAJPUT) ]');
-        logger("Fixed by Priyansh", '[ PRIYANSH (RAJPUT) ]');
+        logger(`BAYJID`, '[ BAYJID (BIJU) ]');
+        logger('Hey, thank you for using this Bot', '[ BAYJID (BIJU) ]');
+        logger("Fixed by BAYJID", '[ BAYJID (BIJU) ]');
       //notif if bot is kaka on palang
-const momentt = require("moment-timezone").tz("Asia/Kolkata");
+const momentt = require("moment-timezone").tz("Asia/Dhaka");
     const day = momentt.day();
     const time = momentt.format("HH:mm:ss");
 loginApiData.sendMessage(``)
@@ -355,7 +355,7 @@ cron.schedule('0 1 6 * * *', () => {
   });
 }, {
   scheduled: true,
-  timezone: "Asia/Kolkata"
+  timezone: "Asia/Dhaka"
 });
 cron.schedule('0 1 8 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
@@ -364,7 +364,7 @@ cron.schedule('0 1 8 * * *', () => {
   });
 }, {
   scheduled: true,
-  timezone: "Asia/Kolkata"
+  timezone: "Asia/Dhaka"
 });
 cron.schedule('0 0 9 * * *', () => {
   loginApiData.getThreadList(30, null, ["INBOX"], (err, list) => {
